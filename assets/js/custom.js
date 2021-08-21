@@ -1,41 +1,41 @@
-/*
-	JavaScript For Responsive Bootstrap Carousel
+// to get current year
+function getYear() {
+    var currentDate = new Date();
+    var currentYear = currentDate.getFullYear();
+    document.querySelector("#displayYear").innerHTML = currentYear;
+}
 
-    Author: Razboynik
-    Author URI: http://filwebs.ru
-    Description: Bootstrap Carousel Effect Ken Burns
+getYear();
 
-*/
-
-$(function ($) {
-
-    /*-----------------------------------------------------------------*/
-    /* ANIMATE SLIDER CAPTION
-    /* Demo Scripts for Bootstrap Carousel and Animate.css article on SitePoint by Maria Antonietta Perna
-    /*-----------------------------------------------------------------*/
-    "use strict";
-    function doAnimations(elems) {
-        //Cache the animation end event in a variable
-        var animEndEv = 'webkitAnimationEnd animationend';
-        elems.each(function () {
-            var $this = $(this),
-                $animationType = $this.data('animation');
-            $this.addClass($animationType).one(animEndEv, function () {
-                $this.removeClass($animationType);
-            });
-        });
+// client section owl carousel
+$(".client_owl-carousel").owlCarousel({
+    loop: true,
+    margin: 20,
+    dots: false,
+    nav: true,
+    navText: [],
+    autoplay: true,
+    autoplayHoverPause: true,
+    navText: [
+        '<i class="fa fa-angle-left" aria-hidden="true"></i>',
+        '<i class="fa fa-angle-right" aria-hidden="true"></i>'
+    ],
+    responsive: {
+        0: {
+            items: 1
+        },
+        768: {
+            items: 2
+        }
     }
-    //Variables on page load
-    var $immortalCarousel = $('.animate_text'),
-        $firstAnimatingElems = $immortalCarousel.find('.item:first').find("[data-animation ^= 'animated']");
-    //Initialize carousel
-    $immortalCarousel.carousel();
-    //Animate captions in first slide on page load
-    doAnimations($firstAnimatingElems);
-    //Other slides to be animated on carousel slide event
-    $immortalCarousel.on('slide.bs.carousel', function (e) {
-        var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
-        doAnimations($animatingElems);
-    });
-   
 });
+
+/** google_map js **/
+
+function myMap() {
+    var mapProp = {
+        center: new google.maps.LatLng(40.712775, -74.005973),
+        zoom: 18,
+    };
+    var map = new google.maps.Map(document.getElementById("googleMap"), mapProp);
+}
